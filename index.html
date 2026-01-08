@@ -38,46 +38,51 @@
 
                     <hr class="solid border-light border-2">
                     <h6 class="card-subtitle mb-2 text-light">Priority</h6>
-                    <section style="grid-template-columns: 1fr 1fr;" class="d-grid gap-2 w-100">
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-danger">
-                            Urgent
+                    <section class="d-flex gap-3">
+                        <button type="button" class="btn badge py-2 px-4 text-light text-bg-secondary rounded-pill border border-2 border-danger">
+                            High
                         </button>
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2">
-                            Important
+                        <button type="button" class="btn badge py-2 px-4 text-light text-bg-secondary rounded-pill border border-2 border-warning">
+                            Medium
                         </button>
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-info">
-                            Appointment
+                        <button type="button" class="btn badge py-2 px-4 text-light text-bg-secondary rounded-pill border border-2 border-light">
+                            Low
                         </button>
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-success">
-                            Done
-                        </button>
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-primary">
-                            Reminder
-                        </button>
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-warning">
-                            Pending
-                        </button>
-                    
+                        
                     </section>
-
 
                     <hr class="solid border-light border-2">
 
                     <h6 class="card-subtitle mb-2 text-light">Category</h6>
                     <section style="grid-template-columns: 1fr 1fr 1fr 1fr;" class="d-grid gap-2 w-100">
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-dark">
+                        <button type="button" class="btn badge p-2 text-light text-bg-secondary rounded-pill border border-2 border-dark">
                             Work
                         </button>
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-dark">
+                        <button type="button" class="btn badge p-2 text-light text-bg-secondary rounded-pill border border-2 border-dark">
                             Reminder
                         </button>
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-dark">
+                        <button type="button" class="btn badge p-2 text-light text-bg-secondary rounded-pill border border-2 border-dark">
                             Health
                         </button>
-                        <button type="button" class="btn badge p-2 text-black-50 text-bg-secondary rounded-pill border border-2 border-dark">
+                        <button type="button" class="btn badge p-2 text-light text-bg-secondary rounded-pill border border-2 border-dark">
                             Home
                         </button>
 
+                    </section>
+                    
+                    <hr class="solid border-light border-2">
+                    <h6 class="card-subtitle mb-2 text-light">Status</h6>
+                    <section class="d-flex gap-3">
+                        <button type="button" class="btn badge py-2 px-4 text-light rounded-pill btn-success">
+                            Completed
+                        </button>
+                        <button type="button" class="btn badge py-2 px-4 text-light rounded-pill btn-warning">
+                            In progress
+                        </button>
+                        <button type="button" class="btn badge py-2 px-4 text-light rounded-pill btn-danger">
+                            Pending
+                        </button>
+                        
                     </section>
 
                     <hr class="solid border-light border-2">
@@ -103,14 +108,19 @@
                         </div>
                     </section>
 
-                    <section class="row mt-3">
+                    <section class="row mt-3 gy-3">
                         <div class="col-6"> 
                             <section class="card">
-                                
                                 <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <header class="d-flex">
+                                        <input class="form-check-input" type="radio" name="radioDefault">
+                                        <h6 class="card-title ms-3">Dental Appointment</h6>
+                                    </header>
+                                    <p class="card-text">Details: dental cleaning 9:30am</p>
+                                    <p class="card-text">Date: 10/01/2026</p>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-primary">Low</button>
+                                    <p>Category:<span class="btn badge ms-1 p-1 btn-info">Reminder</button>
+                                    <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
                             </section>
                         </div>
@@ -118,19 +128,15 @@
                         <div class="col-6"> 
                             <section class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </section>
-                        </div>
-
-                        <div class="col-6">     
-                            <section class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <header class="d-flex">
+                                        <input class="form-check-input" type="radio" name="radioDefault" checked>
+                                        <h6 class="card-title ms-3">Variables in Java</h6>
+                                    </header>
+                                    <p class="card-text">Details: learn variables</p>
+                                    <p class="card-text">Date: 07/01/2026</p>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger">High</button>
+                                    <p>Category:<span class="btn badge ms-1 p-1 btn-secondary">Work</button>
+                                    <p>Status:<span class="btn badge ms-1 p-1 btn-warning">In progress</button>
                                 </div>
                             </section>
                         </div>
@@ -138,12 +144,35 @@
                         <div class="col-6"> 
                             <section class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <header class="d-flex">
+                                        <input class="form-check-input" type="radio" name="radioDefault">
+                                        <h6 class="card-title ms-3">Do the groceries</h6>
+                                    </header>
+                                    <p class="card-text">Details: check the list</p>
+                                    <p class="card-text">Date: 15/01/2026</p>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-warning">Medium</button>
+                                    <p>Category:<span class="btn badge ms-1 p-1 btn-primary">Home</button>
+                                    <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
                             </section>
                         </div>
+
+                        <div class="col-6"> 
+                            <section class="card">
+                                <div class="card-body">
+                                    <header class="d-flex">
+                                        <input class="form-check-input" type="radio" name="radioDefault">
+                                        <h6 class="card-title ms-3">SOAT expiration</h6>
+                                    </header>
+                                    <p class="card-text">Details: try with SURA</p>
+                                    <p class="card-text">Date: 09/02/2026</p>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger">High</button>
+                                    <p>Category:<span class="btn badge ms-1 p-1 btn-info">Reminder</button>
+                                    <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
+                                </div>
+                            </section>
+                        </div>
+
 
                     </section>
 
