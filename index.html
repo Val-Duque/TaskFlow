@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="dark" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +12,22 @@
 
 
 </head>
-<body data-bs-theme="dark">
-    <main class="container position-absolute top-50 start-50 translate-middle mt-1">
+<body>
+    <main class="container position-absolute top-50 start-50 translate-middle mt-5">
     <section class="row">
         <article class="col-md-4">
             <section class="card h-100" style="background-color: var(--bs-gray-800);">
                 <div class="card-body">
-                    <h3 class="card-title text-light text-center align-middle"><span style="height: 1.5rem;"><img class="img-fluid align-middle" style="height: 1.5rem;" src="assets/images/pen.svg" alt=""></span>Task <span class="text-info">Flow</span></h3>
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title text-light text-center align-middle"><span style="height: 1.5rem;"><img class="img-fluid align-middle" style="height: 1.5rem;" src="assets/images/pen.svg" alt=""></span>Task <span class="text-info">Flow</span></h3>
+                        
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="themeToggle" checked>
+                            <label class="form-check-label" for="switchCheckChecked">Theme</label>
+                        </div>
+
+                    </div>
+                    
                     <form class="d-flex" role="search">
                         <div class="position-relative w-100 mt-3">
                             <span class="position-absolute top-50 start-0 translate-middle-y ms-2 opacity-75" style="height: 1.5rem;"><img src="assets/images/search.svg" style="height: 1.5rem;" alt=""></span>
@@ -81,12 +90,20 @@
 
             </section>
         </article>
-        <article class="col-md-5">
+        <article class="col-md-4">
             <section class="card h-100" style="background-color: var(--bs-gray-800);">
                 <div class="card-body">
-                    <h4 class="card-title text-light">My Tasks</h4>
+                    <section class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-title text-light">My Tasks</h4>
 
-                    <section class="row">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-secondary w-100 d-flex align-items-center justify-content-between">
+                                Add<img class="ms-1" style="height: 1.5rem;" src="assets/images/plus.svg" alt="">
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="row mt-3">
                         <div class="col-6"> 
                             <section class="card">
                                 
@@ -140,7 +157,7 @@
 
         <!--DANNA SECTION-->
 
-        <article class="col-md-3">
+        <article class="col-md-4">
             <section class="card mt-3" style="background-color: var(--bs-gray-800);">
                 <div class="card-body">
                     <h4 class="card-title  text-light">Variables in Java</h4>
@@ -206,6 +223,16 @@
             inline: true,
             dateFormat: "Y-m-d"
         });
+
+        const btn = document.getElementById("themeToggle");
+        btn.addEventListener("click", () => {
+            const current = document.documentElement.getAttribute("data-bs-theme");
+            document.documentElement.setAttribute(
+            "data-bs-theme",
+            current === "dark" ? "light" : "dark"
+            );
+        });
+
     </script>
 
 </body>
