@@ -60,3 +60,21 @@ function Guardar() {
     // imprimo
     contenedorPadre.append(hijoPadre)
 }
+
+
+//ELIMINAR TAREAS
+document.addEventListener("DOMContentLoaded", () => {
+    asignarEventosEliminar();
+});
+function asignarEventosEliminar() {
+    const btnDelete = document.querySelectorAll(".deleteToggle");
+
+    btnDelete.forEach(btn => {
+        btn.addEventListener("click", function ()  {
+           if (confirm("¿Seguro que quieres eliminar la tarea?")) {
+                    this.closest(".card").remove(); 
+                }
+        });
+    });
+
+}
