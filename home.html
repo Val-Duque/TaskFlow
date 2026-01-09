@@ -50,13 +50,13 @@
                     <h6 class="card-subtitle mb-2  ">Priority</h6>
                     <!-- Priority buttons: high, medium, low -->
                     <section class="d-flex gap-3">
-                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-danger">
+                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-danger filter-btn" >
                             High
                         </button>
-                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-warning">
+                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-warning filter-btn" >
                             Medium
                         </button>
-                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-light">
+                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-light filter-btn" >
                             Low
                         </button>
                         
@@ -107,7 +107,6 @@
                     </div>
 
                 </div>
-                <button class="btn btn-danger" id="btn-logout">Cerrar Sesión</button>
             </section>
         </article>
 
@@ -172,7 +171,7 @@
                                     </header>
                                     <p class="card-text">Details: learn variables</p>
                                     <p class="card-text">Date: 07/01/2026</p>
-                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger">High</button>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger" data-priority="high">High</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-secondary">Work</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-warning">In progress</button>
                                 </div>
@@ -189,7 +188,7 @@
                                     </header>
                                     <p class="card-text">Details: check the list</p>
                                     <p class="card-text">Date: 15/01/2026</p>
-                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-warning">Medium</button>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-warning" data-priority="medium">Medium</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-primary">Home</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
@@ -206,7 +205,7 @@
                                     </header>
                                     <p class="card-text">Details: try with SURA</p>
                                     <p class="card-text">Date: 09/02/2026</p>
-                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger">High</button>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger" data-priority="high">High</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-info">Reminder</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
@@ -221,26 +220,56 @@
         </article>
 
         <!--DANNA SECTION-->
-
+        <!---->
         <article class="col-md-4">
-            <section class="card h-100 bg-body-secondary">
-                <div class="card-body">
-                    <h4 class="card-title" id="detail-title">Select a task</h4>
-                    <hr class="solid border-2">
-                    <p class="card-text" id="detail-description"></p>
-                    <p class="card-text" id="detail-date"></p>
-                    <p class="card-text">
-                        Priority: <span id="detail-priority" class="badge bg-primary"></span>
-                    </p>
-                    <p class="card-text">Category: <span id="detail-category" class="badge bg-info"></span></p>
-                    <p class="card-text">Status: <span id="detail-status" class="badge bg-secondary"></span></p>
-                    <hr class="solid border-2">
-                    <div class="d-grid gap-2 w-100">
-                        <button type="button" class="btn btn-outline-dark text-bg-secondary" id="btn-edit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg> Edit</button>
 
+            
+            
+            <section class="card h-100 bg-body-secondary p-3">
+                <div class="row d-flex
+                justify-content-around
+                align-items-center">
+                    <button class="btn btn-danger mb-3" id="btn-logout" style="width: 180px;">Cerrar Sesión</button>
+                    <button class="btn btn-danger mb-3" id="btn-logout" style="width: 180px;">Cerrar Sesión</button>
+                </div>
+                
+                <fieldset class="border border-3 p-2">
+                    <legend  class="w-auto float-none">Your Legend</legend>
+                    
+                <div class="card-body">
+                    <h4 class="card-title   ">Variables in Java</h4>
+                    <hr class="solid   border-2">
+                    <p class="card-text   ">Learn how to declare variables and recognize data types in JavaScript.</p>
+                    <hr class="solid   border-2">
+                    <h6 class="card-subtitle  mb-2  ">Date: 7/01/2026</h6>
+                    <hr class="solid   border-2">
+                    <h6 class="card-subtitle mb-2">Status:</h6>
+                    <section   class="col-12  mb-3 w-100 gap-1 d-flex justify-content-around">
+                        <button type="button" class="btn badge me-4 p-2 btn-success">Completed</button>
+                        <button type="button" class="btn badge me-4 p-2 btn-danger">Pending</button>
+                        <button type="button" class="btn badge me-4 p-2 btn-warning">In progress</button>
+                    </section>
+                    <hr class="solid   border-2">
+                    <!-- Buttons for editing and deleting -->
+                     <section style="grid-template-columns: 1fr 1fr;" class="d-grid gap-2 w-100">
+                        <button type="button" class="btn btn-outline-dark text-bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg> Edit</button>
+
+                    <button type="button" id="deleteToggle" class="btn btn-outline-dark text-bg-secondary deleteToggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></svg> Delete</button>
+
+                     </section>
+
+                     <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
+                        <label class="form-check-label" for="checkChecked">
+                            Done
+                        </label>
+                        </div>
                         <button type="button" class="btn btn-outline-dark text-bg-secondary" id="btn-delete-detail"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></svg> Delete</button>
                     </div>
                 </div>
+            </fieldset>
+                <p class="paragraf mt-3">tareas eliminadas <button>0</button></p>
             </section>
         </article>
 
@@ -307,11 +336,20 @@
                 <div class="mb-3">
                     <label  class="form-label">Category</label>
                     <select id="taskCategory" class="form-select">
-                    <option value="Work">Work</option>
-                    <option value="Reminder">Reminder</option>
-                    <option value="Health">Health</option>
-                    <option value="Home">Home</option>
+                        <option value="Work">Work</option>
+                        <option value="Reminder">Reminder</option>
+                        <option value="Health">Health</option>
+                        <option value="Home">Home</option>
                     
+                    </select>
+                </div>
+
+                <div class="mb-3 display">
+                    <label  class="form-label">Status</label>
+                    <select id="taskStatus" class="form-select" disabled>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
                     </select>
                 </div>
 
@@ -333,6 +371,7 @@
     </div>
 
     <script src="./JS/home.js"></script>
+    <script src="script_danna.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>  
 </body>
 
