@@ -93,7 +93,6 @@
                     </div>
 
                 </div>
-                <button class="btn btn-danger" id="btn-logout">Cerrar Sesión</button>
             </section>
         </article>
 
@@ -190,7 +189,20 @@
         <!--DANNA SECTION-->
 
         <article class="col-md-4">
-            <section class="card h-100 bg-body-secondary">
+
+            
+            
+            <section class="card h-100 bg-body-secondary p-3">
+                <div class="row d-flex
+                justify-content-around
+                align-items-center">
+                    <button class="btn btn-danger mb-3" id="btn-logout" style="width: 180px;">Cerrar Sesión</button>
+                    <button class="btn btn-danger mb-3" id="btn-logout" style="width: 180px;">Cerrar Sesión</button>
+                </div>
+                
+                <fieldset class="border border-3 p-2">
+                    <legend  class="w-auto float-none">Your Legend</legend>
+                    
                 <div class="card-body">
                     <h4 class="card-title" id="detail-title">Select a task</h4>
                     <hr class="solid border-2">
@@ -208,6 +220,8 @@
                         <button type="button" class="btn btn-outline-dark text-bg-secondary" id="btn-delete-detail"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></svg> Delete</button>
                     </div>
                 </div>
+            </fieldset>
+                <p class="paragraf mt-3">tareas eliminadas <button>0</button></p>
             </section>
         </article>
 
@@ -258,11 +272,20 @@
                 <div class="mb-3">
                     <label  class="form-label">Category</label>
                     <select id="taskCategory" class="form-select">
-                    <option value="Work">Work</option>
-                    <option value="Reminder">Reminder</option>
-                    <option value="Health">Health</option>
-                    <option value="Home">Home</option>
+                        <option value="Work">Work</option>
+                        <option value="Reminder">Reminder</option>
+                        <option value="Health">Health</option>
+                        <option value="Home">Home</option>
                     
+                    </select>
+                </div>
+
+                <div class="mb-3 display">
+                    <label  class="form-label">Status</label>
+                    <select id="taskStatus" class="form-select" disabled>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
                     </select>
                 </div>
 

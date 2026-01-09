@@ -51,35 +51,36 @@ saveTaskButton.addEventListener("click", function () {
   Guardar();
 });
 
-// ---------- GUARDAR TAREA
+
+
+
 function Guardar() {
 
-  if (!validateTaskInput()) {
+  if (!validateTaskInput())
     return;
-  }
 
-  //--------- CREAMOS EL OBJETO DE LA TAREA
   const nuevaTarea = {
     title: document.getElementById('taskTitle').value,
     description: document.getElementById('taskDescription').value,
     dueDate: document.getElementById('taskDueDate').value,
     priority: document.getElementById('taskPriority').value,
-    category: document.getElementById('taskCategory').value
+    category: document.getElementById('taskCategory').value,
+    status: document.getElementById('taskStatus').value
   };
 
-  //---------- AGREGAMOS LA INFORMACION DEL ARREGLO AL ARRAY TAREAS
-  tareas.push(nuevaTarea);
+  if (selectedTaskIndex !== null) {
+    tareas[selectedTaskIndex] = nuevaTarea;
+  } else {
+    tareas.push(nuevaTarea);
+  }
 
-  //---------- GUARDAMOS EN EL LOCALSTORAGE
   localStorage.setItem("tasks", JSON.stringify(tareas));
   mostrarTareas();
   limpiarModal();
 
-  //---------- CERRAMOS EL MODAL 
-  const modal = bootstrap.Modal.getInstance(document.querySelector('#createTaskModal'));
-  modal.hide();
+  selectedTaskIndex = null;
 
-  alert('Task saved successfully!');
+  bootstrap.Modal.getInstance(document.querySelector('#createTaskModal')).hide();
 }
 
 function validateTaskInput() {
@@ -112,6 +113,7 @@ function mostrarTareas() {
                 <p class="card-text">Date: ${tarea.dueDate}</p>
                 <p>Priority:<span class="btn badge ms-1 p-1 btn-primary">${tarea.priority}</span></p>
                 <p>Category:<span class="btn badge ms-1 p-1 btn-info">${tarea.category}</span></p>
+                <p>Status:<span class="btn badge ms-1 p-1 btn-danger">${tarea.status}</span></p>
                 <button class="btn btn-sm btn-danger mt-2" onclick="eliminarTarea(${index})">Delete</button>
                 </div>
             </section>
@@ -136,6 +138,7 @@ function limpiarModal() {
   document.getElementById('taskDueDate').value = "";
   document.getElementById('taskPriority').value = "low";
   document.getElementById('taskCategory').value = "Work";
+  document.getElementById('taskStatus').value = "Pending";
 }
 
 
@@ -172,6 +175,27 @@ function seleccionarTarea(index) {
   btnDeleteDetail.style.display = "block";
 }
 
+// ---------- ESDITAR TAREAS SELECCIONADAS
+btnEditDetail.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (selectedTaskIndex === null) return;
+
+  const tarea = tareas[selectedTaskIndex];
+
+  document.getElementById('taskTitle').value = tarea.title;
+  document.getElementById('taskDescription').value = tarea.description;
+  document.getElementById('taskDueDate').value = tarea.dueDate;
+  document.getElementById('taskPriority').value = tarea.priority;
+  document.getElementById('taskCategory').value = tarea.category;
+  document.getElementById('taskStatus').value = tarea.status;
+
+  // modoEdicion = true;
+  saveTaskButton.innerText = "Save";
+
+  new bootstrap.Modal(document.querySelector('#createTaskModal')).show();
+});
+
+
 // ---------- ELIMINAMOS LAS TRAEAS QUE TENEMOS SELECCIONADAS
 btnDeleteDetail.addEventListener("click", function () {
   if (selectedTaskIndex === null) return;
@@ -188,6 +212,5 @@ btnDeleteDetail.addEventListener("click", function () {
   detailCategory.innerText = "";
   detailStatus.innerText = "";
 });
-
 
 
