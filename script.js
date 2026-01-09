@@ -64,13 +64,13 @@ function Guardar() {
 }
 
 function validateTaskInput() {
-    const title = document.getElementById('taskTitle').value;
-    // const description = document.getElementById('taskDescription').value;
-    // const dueDate = document.getElementById('taskDueDate').value;
+    const title = document.getElementById('taskTitle');
+    const description = document.getElementById('taskDescription');
+    const dueDate = document.getElementById('taskDueDate');
     
-    if( title == '' ) {
+    if( title.value.trim() === '' || description.value.trim() === '' ||  dueDate.value.trim() === '')  {
         alert('Please fill in all required fields: Title, Description, and Due Date.');
-        return false;
+        return false ;
     }
     else {
         alert('Task saved successfully!');
