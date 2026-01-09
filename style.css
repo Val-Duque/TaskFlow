@@ -1,0 +1,53 @@
+
+.login-title {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 25px;
+}
+.logo {
+    margin-bottom: 15px;
+}
+.contenedor {
+    margin-top: 10rem;
+    border-radius: 12px;
+}
+.contenedor-form {
+    padding: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 14px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 14px;
+    background-color: #cdcccc;
+    box-shadow: 0 3px 15px #6c757d;
+    border-radius: 8px;
+}
+.formulario input {
+    width: 420px;
+}
+#contenedor-padre-tareas {
+    width: 100%;
+    height: 700px;
+    display: flex;
+    
+    
+    flex-wrap: wrap;     
+    gap: 0.3rem;
+    overflow-x: hidden;    
+    overflow-y: scroll;
+
+    
+}
+.cardCard {
+    width: 11.5rem;
+    
+}
+
