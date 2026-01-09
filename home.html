@@ -40,13 +40,13 @@
                     <hr class="solid   border-2">
                     <h6 class="card-subtitle mb-2  ">Priority</h6>
                     <section class="d-flex gap-3">
-                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-danger">
+                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-danger filter-btn" >
                             High
                         </button>
-                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-warning">
+                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-warning filter-btn" >
                             Medium
                         </button>
-                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-light">
+                        <button type="button" class="btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-light filter-btn" >
                             Low
                         </button>
                         
@@ -122,7 +122,7 @@
                                     </header>
                                     <p class="card-text">Details: dental cleaning 9:30am</p>
                                     <p class="card-text">Date: 10/01/2026</p>
-                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-primary">Low</button>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-primary " data-priority="low">Low</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-info">Reminder</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
@@ -138,7 +138,7 @@
                                     </header>
                                     <p class="card-text">Details: learn variables</p>
                                     <p class="card-text">Date: 07/01/2026</p>
-                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger">High</button>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger" data-priority="high">High</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-secondary">Work</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-warning">In progress</button>
                                 </div>
@@ -154,7 +154,7 @@
                                     </header>
                                     <p class="card-text">Details: check the list</p>
                                     <p class="card-text">Date: 15/01/2026</p>
-                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-warning">Medium</button>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-warning" data-priority="medium">Medium</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-primary">Home</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
@@ -170,7 +170,7 @@
                                     </header>
                                     <p class="card-text">Details: try with SURA</p>
                                     <p class="card-text">Date: 09/02/2026</p>
-                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger">High</button>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger" data-priority="high">High</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-info">Reminder</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
@@ -188,7 +188,7 @@
         <!--^VEROS SECTION^-->
 
         <!--DANNA SECTION-->
-
+        <!---->
         <article class="col-md-4">
             <section class="card h-100 bg-body-secondary">
                 <div class="card-body">
@@ -296,6 +296,7 @@
 
     <!-- <script src="./script.js"></script> -->
     <script src="./JS/home.js"></script>
+    <script src="script_danna.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>  
 </body>
 

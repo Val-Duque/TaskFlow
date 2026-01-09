@@ -50,7 +50,7 @@ function Guardar() {
                                     </header>
                                     <p class="card-text">Details: dental cleaning 9:30am</p>
                                     <p class="card-text">Date: 10/01/2026</p>
-                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-primary">Low</button>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-primary" data-priority="low">Low</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-info">Reminder</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
@@ -78,3 +78,34 @@ function asignarEventosEliminar() {
     });
 
 }
+
+// FILTRE TAREAS
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        const prioritySelected = btn.textContent.trim().toLowerCase();
+        const cards = document.querySelectorAll("#contenedor-padre-tareas .cardCard");
+
+        let found = false;
+
+        cards.forEach(card => {
+            const priority = card
+                .querySelector("[data-priority]")
+                .dataset.priority
+                .toLowerCase();
+
+            if (priority === prioritySelected) {
+                card.style.display = "";
+                found = true;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        if (!found) {
+            alert("No tasks found with the selected priority.");
+        }
+    });
+});
