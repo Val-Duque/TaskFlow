@@ -272,3 +272,38 @@ filterStatusButtons.forEach(btn => {
 });
 
 
+// FILTRE TAREAS
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        const prioritySelected = btn.textContent.trim().toLowerCase();
+        const cards = document.querySelectorAll("#contenedor-padre-tareas .cardCard");
+
+        let found = false;
+
+        cards.forEach(card => {
+            const priority = card
+                .querySelector("[data-priority]")
+                .dataset.priority
+                .toLowerCase();
+
+            if (priority === prioritySelected) {
+                card.style.display = "";
+                found = true;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        if (!found) {
+            alert("No tasks found with the selected priority.");
+        }
+    });
+});
+
+
+
+
