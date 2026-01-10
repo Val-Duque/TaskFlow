@@ -102,7 +102,7 @@ function mostrarTareas() {
   tareas.forEach((tarea, index) => {
     const taskContainer = document.createElement('div');
     taskContainer.innerHTML = `
-        <div class="col-6 cardCard" data-priority="${tarea.priority.toLowerCase()}">
+        <div class="col-6 cardCard" data-priority="${tarea.priority.toLowerCase()}" data-status="${tarea.status.toLowerCase()}">
             <section class="card" onclick="seleccionarTarea(${index})">
                 <div class="card-body">
                 <header class="d-flex">
@@ -123,6 +123,7 @@ function mostrarTareas() {
     contenedorPadre.append(taskContainer);
   });
 }
+
 
 // ---------- ELIMINAR TAREA
 function eliminarTarea(index) {
@@ -189,7 +190,8 @@ btnEditDetail.addEventListener("click", (e) => {
   document.getElementById('taskCategory').value = tarea.category;
   document.getElementById('taskStatus').value = tarea.status;
 
-  // modoEdicion = true;
+  document.getElementById('taskStatus').disabled = false;
+
   saveTaskButton.innerText = "Save";
 
   new bootstrap.Modal(document.querySelector('#createTaskModal')).show();
@@ -240,6 +242,33 @@ filterButtons.forEach(btn => {
             alert("No tasks found with the selected priority.");
         }
     });
+});
+
+const filterStatusButtons = document.querySelectorAll(".filter-status-btn");
+
+filterStatusButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    const statusSelected = btn.textContent.trim().toLowerCase();
+    const cards = document.querySelectorAll("#contenedor-padre-tareas .cardCard");
+
+    let found = false;
+
+    cards.forEach(card => {
+      const status = card.dataset.status;
+
+      if (status === statusSelected) {
+        card.style.display = "";
+        found = true;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    if (!found) {
+      alert("No tasks found with the selected status.");
+    }
+  });
 });
 
 
