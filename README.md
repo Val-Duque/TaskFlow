@@ -26,11 +26,11 @@ Anyone who needs to organize and prioritize tasks simply and efficiently.
 
 | Danna Michelle | UI/UX Manager |
 
-Veronica Martires | UI/UX Manager |
+| Veronica Martires | UI/UX Manager |
 
-Cesar Rios | Logic and Status Manager |
+| Cesar Rios | Logic and Status Manager |
 
-Miguel Calle | Logic and State Manager |
+| Miguel Calle | Logic and State Manager |
 
 ---
 
@@ -39,6 +39,7 @@ Miguel Calle | Logic and State Manager |
 - CSS
 - Vanilla JavaScript
 - Bootstrap
+- Flatpickr (date picker library)
 
 ---
 
@@ -49,22 +50,26 @@ The application allows the following functionalities:
 
 ---------------|------------|
 
-📝 Create Tasks | Add new tasks with title, description, and priority |
+📝 Create Tasks | Add new tasks with title, description, duedate and priority |
 
 🔄 Change Status | Mark tasks as pending, in progress, or completed |
 
 🗑️ Delete Tasks | Delete tasks without reloading the page |
 
+👀 Visalization | Task panel visualization
+
 ⚡ Filters | Filter by status or priority |
 
 ✅ Validations | Prevent empty tasks and display success or error messages |
+
+🌗 Light/Dark Modes | User can change the visualization mode between dark and light
 
 ---
 
 ### Functionality Details
 
 1️⃣ **Create Tasks**
-- Each task has: Title, Description, Priority (High / Medium / Low)
+- Each task has: Title, Description, Duedate, Priority (High / Medium / Low)
 - Events: `submit`, `input`, `click`
 
 2️⃣ **Display Tasks Dynamically**
@@ -110,13 +115,15 @@ TaskFlow is a web prototype for a **fictional startup** that aims to help small 
 ## How to Use
 1. Open the webpage in your browser.
 
-2. Fill out the form to create tasks.
+2. Login with administrator credentials
 
-3. Use the buttons or filters to manage tasks.
+3. Fill out the form to create tasks.
 
-4. Change the status of tasks according to their progress.
+4. Use the buttons or filters to manage tasks.
 
-5. Filter tasks by priority or status.
+5. Change the status of tasks according to their progress.
+
+6. Filter tasks by priority or status.
 
 ---
 
@@ -144,9 +151,11 @@ TaskFlow is a web prototype for a **fictional startup** that aims to help small 
 
 Resources used:
 - [Bootstrap](https://getbootstrap.com/)
-- [Font] Font Awesome (https://fontawesome.com/) for icons
+- [Font Awesome](https://fontawesome.com/) for icons
+- [Flatpickr](https://flatpickr.js.org/) for the calendar
 
 ---
 
 ## License
 This project is for **educational and demonstration** use only, and is free to modify and learn from.
+Riwi - Turing - 2026
