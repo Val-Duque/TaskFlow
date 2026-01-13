@@ -220,18 +220,44 @@ btnDeleteDetail.addEventListener("click", function () {
 const filterButtons = document.querySelectorAll(".filter-btn");
 
 filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        const prioritySelected = btn.textContent.trim().toLowerCase();
+        const cards = document.querySelectorAll("#contenedor-padre-tareas .cardCard");
+
+        let found = false;
+
+        cards.forEach(card => {
+            const priority = card.dataset.priority;
+
+            if (priority === prioritySelected) {
+                card.style.display = "";
+                found = true;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        if (!found) {
+            alert("No tasks found with the selected priority.");
+        }
+    });
+});
+
+const filterStatusButtons = document.querySelectorAll(".filter-status-btn");
+
+filterStatusButtons.forEach(btn => {
   btn.addEventListener("click", () => {
 
-    const filterType = btn.dataset.filter;
-    const valueSelected = btn.textContent.trim().toLowerCase();
+    const statusSelected = btn.textContent.trim().toLowerCase();
     const cards = document.querySelectorAll("#contenedor-padre-tareas .cardCard");
 
     let found = false;
 
     cards.forEach(card => {
-      const cardValue = card.dataset[filterType];
+      const status = card.dataset.status;
 
-      if (cardValue === valueSelected) {
+      if (status === statusSelected) {
         card.style.display = "";
         found = true;
       } else {
@@ -240,7 +266,9 @@ filterButtons.forEach(btn => {
     });
 
     if (!found) {
-      alert(`No tasks found with the selected ${filterType}.`);
+      alert("No tasks found with the selected status.");
     }
   });
 });
+
+
