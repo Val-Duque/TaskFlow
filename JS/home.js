@@ -1,11 +1,9 @@
-// -------------------------- SECCION LOGIN VERIFICACION SI SE ESTA LOGUEADO O NO ---------------------------------
-
-//----------- VERIFICAMOS QUE ESTAMOS LOGUEADOS
+//- VERIFICAMOS QUE ESTAMOS LOGUEADOS
 if (sessionStorage.getItem("logueado") !== "true") {
   window.location.href = "./index.html";
 }
 
-//----------- BOTON PARA CERRAR SESION
+//- BOTON PARA CERRAR SESION
 const btnLogout = document.querySelector("#btn-logout");
 
 btnLogout.addEventListener("click", function () {
@@ -14,17 +12,13 @@ btnLogout.addEventListener("click", function () {
 });
 
 
-// -------------------------- SECCION CALENDARIO ---------------------------------
-
-// ---------- CALENDARIO
+//- CALENDARIO
 flatpickr("#calendar", {
   inline: true,
   dateFormat: "Y-m-d"
 });
 
-// -------------------------- SECCION CAMBIAR COLOR PAGINA ---------------------------------
-
-// ---------- TEMA HOME
+// TEMA HOME
 const btn = document.getElementById("themeToggle");
 
 btn.addEventListener("click", () => {
@@ -36,17 +30,15 @@ btn.addEventListener("click", () => {
 });
 
 
-// -------------------------- SECCION HOME ---------------------------------
-
-// ---------- SELECCIÓN DE ELEMENTOS
+// SELECCIÓN DE ELEMENTOS
 const contenedorPadre = document.querySelector('#contenedor-padre-tareas');
 const saveTaskButton = document.querySelector('#saveTaskButton');
 
-//----------- CARGAMOS LAS TRAEAS QUE HAY EN EL LOCALSTORAGE Y SI NO HAY CREAMOS EL ARRAY DONDE SE GUARDARAN
+// CARGAMOS LAS TRAEAS QUE HAY EN EL LOCALSTORAGE Y SI NO HAY CREAMOS EL ARRAY DONDE SE GUARDARAN
 let tareas = JSON.parse(localStorage.getItem("tasks")) || [];
 mostrarTareas();
 
-// ---------- BOTÓN GUARDAR
+// BOTÓN GUARDAR
 saveTaskButton.addEventListener("click", function () {
   Guardar();
 });
@@ -95,14 +87,17 @@ function validateTaskInput() {
   return true;
 }
 
-// ---------- MOSTRAR TAREAS
+// MOSTRAR TAREAS
 function mostrarTareas() {
-  contenedorPadre.innerHTML = ""; 
+  contenedorPadre.innerHTML = "";
 
   tareas.forEach((tarea, index) => {
     const taskContainer = document.createElement('div');
+    taskContainer.className = "col-6 cardCard";
+    taskContainer.dataset.priority = tarea.priority.toLowerCase();
+    taskContainer.dataset.status = tarea.status.toLowerCase();
+
     taskContainer.innerHTML = `
-        <div class="col-6 cardCard" data-priority="${tarea.priority.toLowerCase()}" data-status="${tarea.status.toLowerCase()}">
             <section class="card" onclick="seleccionarTarea(${index})">
                 <div class="card-body">
                 <header class="d-flex">
@@ -117,7 +112,6 @@ function mostrarTareas() {
                 <button class="btn btn-sm btn-danger mt-2" onclick="eliminarTarea(${index})">Delete</button>
                 </div>
             </section>
-        </div>
     `;
 
     contenedorPadre.append(taskContainer);
@@ -125,14 +119,14 @@ function mostrarTareas() {
 }
 
 
-// ---------- ELIMINAR TAREA
+// ELIMINAR TAREA
 function eliminarTarea(index) {
   tareas.splice(index, 1);
   localStorage.setItem("tasks", JSON.stringify(tareas));
   mostrarTareas();
 }
 
-// ---------- LIMPIAR MODAL
+// LIMPIAR MODAL
 function limpiarModal() {
   document.getElementById('taskTitle').value = "";
   document.getElementById('taskDescription').value = "";
@@ -143,10 +137,7 @@ function limpiarModal() {
 }
 
 
-
-// -------------------------- SECCION DONDE SELECCIONAMOS LAS TAREAS A MODIFICAR O ELIMINAR ---------------------------------
-
-// ---------- SELECCIÓN DE ELEMENTOS
+// SELECCIÓN DE ELEMENTOS
 const detailTitle = document.getElementById('detail-title');
 const detailDescription = document.getElementById('detail-description');
 const detailDate = document.getElementById('detail-date');
@@ -157,14 +148,14 @@ const detailStatus = document.getElementById('detail-status');
 const btnEditDetail = document.getElementById('btn-edit');
 const btnDeleteDetail = document.getElementById('btn-delete-detail');
 
-// ---------- VARIABLE PARA GUARDAR LA TAREA SELECCIONADA
+// VARIABLE PARA GUARDAR LA TAREA SELECCIONADA
 let selectedTaskIndex = null;
 
-// ---------- SELECCIONAMOS LAS TRAEAS DESDE EL LISTADO
+// SELECCIONAMOS LAS TRAEAS DESDE EL LISTADO
 function seleccionarTarea(index) {
   selectedTaskIndex = index;
   const tarea = tareas[index];
-  //  ------- LEEMOS LOS VALORES DE LOS CAMPOS CON LA PROPIEDAD innerText
+  //  LEEMOS LOS VALORES DE LOS CAMPOS CON LA PROPIEDAD innerText
   detailTitle.innerText = tarea.title;
   detailDescription.innerText = "Details: " + tarea.description;
   detailDate.innerText = "Date: " + tarea.dueDate;
@@ -176,7 +167,7 @@ function seleccionarTarea(index) {
   btnDeleteDetail.style.display = "block";
 }
 
-// ---------- ESDITAR TAREAS SELECCIONADAS
+// ESDITAR TAREAS SELECCIONADAS
 btnEditDetail.addEventListener("click", (e) => {
   e.preventDefault();
   if (selectedTaskIndex === null) return;
@@ -198,7 +189,7 @@ btnEditDetail.addEventListener("click", (e) => {
 });
 
 
-// ---------- ELIMINAMOS LAS TRAEAS QUE TENEMOS SELECCIONADAS
+// ELIMINAMOS LAS TRAEAS QUE TENEMOS SELECCIONADAS
 btnDeleteDetail.addEventListener("click", function () {
   if (selectedTaskIndex === null) return;
 
@@ -220,28 +211,28 @@ btnDeleteDetail.addEventListener("click", function () {
 const filterButtons = document.querySelectorAll(".filter-btn");
 
 filterButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
+  btn.addEventListener("click", () => {
 
-        const prioritySelected = btn.textContent.trim().toLowerCase();
-        const cards = document.querySelectorAll("#contenedor-padre-tareas .cardCard");
+    const prioritySelected = btn.textContent.trim().toLowerCase();
+    const cards = document.querySelectorAll("#contenedor-padre-tareas .cardCard");
 
-        let found = false;
+    let found = false;
 
-        cards.forEach(card => {
-            const priority = card.dataset.priority;
+    cards.forEach(card => {
+      const priority = card.dataset.priority;
 
-            if (priority === prioritySelected) {
-                card.style.display = "";
-                found = true;
-            } else {
-                card.style.display = "none";
-            }
-        });
-
-        if (!found) {
-            alert("No tasks found with the selected priority.");
-        }
+      if (priority === prioritySelected) {
+        card.style.display = "";
+        found = true;
+      } else {
+        card.style.display = "none";
+      }
     });
+
+    if (!found) {
+      alert("No tasks found with the selected priority.");
+    }
+  });
 });
 
 const filterStatusButtons = document.querySelectorAll(".filter-status-btn");
@@ -272,37 +263,7 @@ filterStatusButtons.forEach(btn => {
 });
 
 
-// FILTRE TAREAS
 
-const filterButtons = document.querySelectorAll(".filter-btn");
-
-filterButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-
-        const prioritySelected = btn.textContent.trim().toLowerCase();
-        const cards = document.querySelectorAll("#contenedor-padre-tareas .cardCard");
-
-        let found = false;
-
-        cards.forEach(card => {
-            const priority = card
-                .querySelector("[data-priority]")
-                .dataset.priority
-                .toLowerCase();
-
-            if (priority === prioritySelected) {
-                card.style.display = "";
-                found = true;
-            } else {
-                card.style.display = "none";
-            }
-        });
-
-        if (!found) {
-            alert("No tasks found with the selected priority.");
-        }
-    });
-});
 
 
 

@@ -1,22 +1,25 @@
-
 .login-title {
     text-align: center;
     margin: 15px 0;
     font-size: 25px;
 }
+
 .logo {
     margin-bottom: 15px;
 }
+
 .contenedor {
     margin-top: 10rem;
     border-radius: 12px;
 }
+
 .contenedor-form {
     padding: 13px;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
+
 .formulario {
     display: flex;
     justify-content: center;
@@ -30,35 +33,33 @@
     box-shadow: 0 3px 15px #6c757d;
     border-radius: 8px;
 }
+
 .formulario input {
     width: 420px;
 }
+
 #contenedor-padre-tareas {
     width: 100%;
     height: 700px;
-    display: flex;
-    
-    
-    flex-wrap: wrap;     
-    gap: 0.3rem;
-    overflow-x: hidden;    
+    /* display: flex; Removed to use bootstrap row */
+    /* flex-wrap: wrap; Removed to use bootstrap row */
+    /* gap: 0.3rem; Removed to prevent grid breaking (50% + 50% + gap > 100%) */
+    overflow-x: hidden;
     overflow-y: scroll;
+}
 
-    
-}
-.cardCard {
-    width: 11.5rem;
-    
-}
+
 
 fieldset {
     box-shadow: 0 5px 16px rgb(128 128 128);
 
     border-radius: 12px;
 }
+
 .float-none {
     padding: 0 12px;
 }
+
 /* .display {
     display: none;
 } */
