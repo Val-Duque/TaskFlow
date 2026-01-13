@@ -9,52 +9,60 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
     <link rel="stylesheet" href="./style.css">
-    
-
-
 </head>
 <body>
     <main class="container position-absolute top-50 start-50 translate-middle mt-1">
     <section class="row ">
         <article class="col-md-4">
+            <!-- Sidebar column that contains filters and calendar -->
             <section class="card h-100 bg-body-secondary">
                 <div class="card-body">
+                    <!-- Header: app title and theme switch -->
                     <div class="d-flex justify-content-between">
-                        <h3 class="card-title text-center align-middle"><span style="height: 1.5rem;"><img class="img-fluid align-middle" style="height: 1.5rem;" src="assets/images/pen.svg" alt=""></span>Task <span class="text-info">Flow</span></h3>
-                        
+                        <!-- Application logo and title -->
+                        <h3 class="card-title text-center align-middle">
+                            <span style="height: 1.5rem;">
+                                <img class="img-fluid align-middle" style="height: 1.5rem;" src="assets/images/pen.svg" alt="">
+                            </span>Task <span class="text-info">Flow</span></h3>
+                        <!-- Theme toggle switch (light/dark mode) -->
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="themeToggle" checked>
                             <label class="form-check-label" for="switchCheckChecked">Theme</label>
                         </div>
 
                     </div>
-                    
+                    <!-- Search input with icon inside -->
                     <form class="d-flex" role="search">
                         <div class="position-relative w-100 mt-3">
+                            <!-- Search icon positioned inside the input -->
                             <span class="position-absolute top-50 start-0 translate-middle-y ms-2 opacity-75" style="height: 1.5rem;"><img src="assets/images/search.svg" style="height: 1.5rem;" alt=""></span>
+                            
+                            <!-- Search field for tasks -->
                             <input type="search" style="background-color: var(--bs-gray-600);"  class="form-control ps-5" placeholder="Search Task...">
                         </div>
                     </form>
 
-
+                    <!-- Priority filter section -->
                     <hr class="solid   border-2">
                     <h6 class="card-subtitle mb-2  ">Priority</h6>
+                    <!-- Priority buttons: high, medium, low -->
                     <section class="d-flex gap-3">
-                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-danger">
+                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-danger" data-filter="priority">
                             High
                         </button>
-                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-warning">
+                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-warning" data-filter="priority">
                             Medium
                         </button>
-                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-light">
+                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-light" data-filter="priority">
                             Low
                         </button>
                         
                     </section>
-
+                    <!-- Category filter section -->
                     <hr class="solid border-2">
 
                     <h6 class="card-subtitle mb-2  ">Category</h6>
+                    <!-- Category buttons displayed as grid -->
                     <section style="grid-template-columns: 1fr 1fr 1fr 1fr;" class="d-grid gap-2 w-100">
                         <button type="button" class="btn badge p-2   text-bg-secondary rounded-pill border border-2 border-dark">
                             Work
@@ -71,57 +79,124 @@
 
                     </section>
                     
+                    <!-- Status filter section -->
                     <hr class="solid   border-2">
                     <h6 class="card-subtitle mb-2  ">Status</h6>
+                    
+                    <!-- Task status buttons -->
                     <section class="d-flex gap-3">
-                        <button type="button" class="filter-status-btn btn badge py-2 px-4   rounded-pill btn-success">
+                        <button type="button" class="filter-btn btn badge py-2 px-4   rounded-pill btn-success" data-filter="status">
                             Completed
                         </button>
-                        <button type="button" class="filter-status-btn btn badge py-2 px-4   rounded-pill btn-warning">
+                        <button type="button" class="filter-btn btn badge py-2 px-4   rounded-pill btn-warning" data-filter="status">
                             In Progress
                         </button>
-                        <button type="button" class="filter-status-btn btn badge py-2 px-4   rounded-pill btn-danger">
+                        <button type="button" class="filter-btn btn badge py-2 px-4   rounded-pill btn-danger" data-filter="status">
                             Pending
                         </button>
                         
                     </section>
 
                     <hr class="solid   border-2">
-
+                    <!-- Calendar container -->
                     <div class="d-flex justify-content-center my-3 p-1">
                         <div id="calendar"></div>
                     </div>
-
                 </div>
             </section>
         </article>
 
-        <!-- MY TASKS -->
+        <!-- Column that contains the tasks section -->
         <article class="col-md-4">
+
+            <!-- Card container with secondary background color -->
             <section class="card h-100 bg-body-secondary">
                 <div class="card-body">
+                    <!-- Header with title and button to open modal -->
                     <section class="d-flex justify-content-between align-items-center">
+
+                        <!-- Section title -->
                         <h4 class="card-title  ">My Tasks</h4>
 
+                        <!-- Button that opens the modal to create a new task -->
                         <div class="d-flex align-items-center">
                             <button type="button" class="btn btn-secondary w-100 d-flex align-items-center justify-content-between" data-bs-toggle="modal" data-bs-target="#createTaskModal">
                                 Add<img class="ms-1" style="height: 1.5rem;" src="assets/images/plus.svg" alt="">
                             </button>
                         </div>
-
                     </section>
 
+                    <!-- Container where all task cards will be displayed -->
                     <section class="mt-3 gy-1" id="contenedor-padre-tareas">
-                        <div class="col-6 cardCard" data-priority="alta"> 
+
+                        <!-- Each element represents an individual task card -->
+                        <div class="col-6 cardCard"> 
                             <section class="card">
                                 <div class="card-body">
+
+                                    <!-- Header with radio button to select the task -->
                                     <header class="d-flex">
                                         <input class="form-check-input" type="radio" name="radioDefault">
                                         <h6 class="card-title ms-3">Dental Appointment</h6>
                                     </header>
+
+                                    <!-- Task information -->
                                     <p class="card-text">Details: dental cleaning 9:30am</p>
                                     <p class="card-text">Date: 10/01/2026</p>
                                     <p>Priority:<span class="btn badge ms-1 p-1 btn-primary">Low</button>
+                                    <p>Category:<span class="btn badge ms-1 p-1 btn-info">Reminder</button>
+
+                                    <!-- Status label -->
+                                    <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
+                                </div>
+                            </section>
+                        </div>
+                        
+                        <!-- Task 2 -->
+                        <div class="col-6 cardCard"> 
+                            <section class="card">
+                                <div class="card-body">
+                                    <header class="d-flex">
+                                        <input class="form-check-input" type="radio" name="radioDefault" checked>
+                                        <h6 class="card-title ms-3">Variables in Java</h6>
+                                    </header>
+                                    <p class="card-text">Details: learn variables</p>
+                                    <p class="card-text">Date: 07/01/2026</p>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger" data-priority="high">High</button>
+                                    <p>Category:<span class="btn badge ms-1 p-1 btn-secondary">Work</button>
+                                    <p>Status:<span class="btn badge ms-1 p-1 btn-warning">In progress</button>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- Task 3 -->
+                        <div class="col-6 cardCard"> 
+                            <section class="card">
+                                <div class="card-body">
+                                    <header class="d-flex">
+                                        <input class="form-check-input" type="radio" name="radioDefault">
+                                        <h6 class="card-title ms-3">Do the groceries</h6>
+                                    </header>
+                                    <p class="card-text">Details: check the list</p>
+                                    <p class="card-text">Date: 15/01/2026</p>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-warning" data-priority="medium">Medium</button>
+                                    <p>Category:<span class="btn badge ms-1 p-1 btn-primary">Home</button>
+                                    <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- Task 4 -->
+                        <div class="col-6 cardCard"> 
+                            <section class="card">
+                                <div class="card-body">
+                                    <header class="d-flex">
+                                        <input class="form-check-input" type="radio" name="radioDefault">
+                                        <h6 class="card-title ms-3">SOAT expiration</h6>
+                                    </header>
+                                    <p class="card-text">Details: try with SURA</p>
+                                    <p class="card-text">Date: 09/02/2026</p>
+                                    <p>Priority:<span class="btn badge ms-1 p-1 btn-danger" data-priority="high">High</button>
                                     <p>Category:<span class="btn badge ms-1 p-1 btn-info">Reminder</button>
                                     <p>Status:<span class="btn badge ms-1 p-1 btn-danger">Pending</class=></span></p>
                                 </div>
@@ -129,47 +204,56 @@
                         </div>
                     </section>
                 </div>
-
             </section>
         </article>
-        
-
-        <!--^VEROS SECTION^-->
 
         <!--DANNA SECTION-->
-
+        <!---->
         <article class="col-md-4">
-
             <section class="card h-100 bg-body-secondary p-3">
                 <div class="row d-flex
                 justify-content-end
                 align-items-center">
                     <button class="btn btn-secondary mb-3" id="btn-logout" style="width: 180px;">Cerrar Sesión</button>
-                    <!-- <button class="btn btn-danger mb-3" id="btn-logout" style="width: 180px;">Cerrar Sesión</button> -->
                 </div>
                 
                 <fieldset class="border border-3 p-2">
                     <legend  class="w-auto float-none">Your Legend</legend>
                     
                 <div class="card-body">
-                    <h4 class="card-title" id="detail-title">Select a task</h4>
-                    <hr class="solid border-2">
-                    <p class="card-text" id="detail-description"></p>
-                    <p class="card-text" id="detail-date"></p>
-                    <p class="card-text">
-                        Priority: <span id="detail-priority" class="badge bg-primary"></span>
-                    </p>
-                    <p class="card-text">Category: <span id="detail-category" class="badge bg-info"></span></p>
-                    <p class="card-text">Status: <span id="detail-status" class="badge bg-secondary"></span></p>
-                    <hr class="solid border-2">
-                    <div class="d-grid gap-2 w-100">
-                        <button type="button" class="btn btn-outline-dark text-bg-secondary" id="btn-edit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg> Edit</button>
+                    <h4 class="card-title   ">Variables in Java</h4>
+                    <hr class="solid   border-2">
+                    <p class="card-text   ">Learn how to declare variables and recognize data types in JavaScript.</p>
+                    <hr class="solid   border-2">
+                    <h6 class="card-subtitle  mb-2  ">Date: 7/01/2026</h6>
+                    <hr class="solid   border-2">
+                    <h6 class="card-subtitle mb-2">Status:</h6>
+                    <section   class="col-12  mb-3 w-100 gap-1 d-flex justify-content-around">
+                        <button type="button" class="btn badge me-4 p-2 btn-success">Completed</button>
+                        <button type="button" class="btn badge me-4 p-2 btn-danger">Pending</button>
+                        <button type="button" class="btn badge me-4 p-2 btn-warning">In progress</button>
+                    </section>
+                    <hr class="solid   border-2">
+                    <!-- Buttons for editing and deleting -->
+                    <section style="grid-template-columns: 1fr 1fr;" class="d-grid gap-2 w-100">
+                        <button type="button" class="btn btn-outline-dark text-bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg> Edit</button>
 
+                    <button type="button" id="deleteToggle" class="btn btn-outline-dark text-bg-secondary deleteToggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></svg> Delete</button>
+
+                    </section>
+
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
+                        <label class="form-check-label" for="checkChecked">
+                            Done
+                        </label>
+                        </div>
                         <button type="button" class="btn btn-outline-dark text-bg-secondary" id="btn-delete-detail"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></svg> Delete</button>
                     </div>
                 </div>
             </fieldset>
-                <p class="paragraf mt-3">tareas eliminadas <button>0</button></p>
+                <p class="paragraf mt-3">Deleted Tasks <button>0</button></p>
             </section>
         </article>
 
@@ -177,72 +261,88 @@
     </section>
     </main>
 
-  
-
-    <!-- Modal -->
+    <!-- Modal container. "fade" adds animation. It is hidden by default -->
     <div class="modal fade" id="createTaskModal" tabindex="-1" aria-labelledby="createTaskModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
 
+        <!-- Centers the modal vertically on the screen -->
+        <div class="modal-dialog modal-dialog-centered">
+
+            <!-- Main modal structure -->
+            <div class="modal-content">
+            
+            <!-- Modal header section -->
             <div class="modal-header">
+
+                <!-- Title displayed at the top of the modal -->
                 <h5 class="modal-title" id="createTaskModalLabel">New Task</h5>
+
+                <!-- Button to close the modal -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
 
+            <!-- Main content area of the modal -->
             <div class="modal-body">
 
+                <!-- Form that contains all task inputs -->
                 <form id="taskForm">
+                
+                    <!-- Task title input -->
+                    <div class="mb-3">
+                        <label  class="form-label">Task Title</label>
+                        <input id="taskTitle" type="text" class="form-control" >
+                    </div>
 
-                <div class="mb-3">
-                    <label  class="form-label">Task Title</label>
-                    <input id="taskTitle" type="text" class="form-control" >
-                </div>
+                    <!-- Task description textarea -->
+                    <div class="mb-3">
+                        <label  class="form-label">Description</label>
+                        <textarea id="taskDescription" class="form-control" rows="3" ></textarea>
+                    </div>
 
-                <div class="mb-3">
-                    <label  class="form-label">Description</label>
-                    <textarea id="taskDescription" class="form-control" rows="3" ></textarea>
-                </div>
+                    <!-- Due date selector -->
+                    <div class="mb-3">
+                        <label  class="form-label">Due date</label>
+                        <input id="taskDueDate" type="date" class="form-control">
+                    </div>
 
-                <div class="mb-3">
-                    <label  class="form-label">Due date</label>
-                    <input id="taskDueDate" type="date" class="form-control">
-                </div>
+                    <!-- Priority dropdown list -->
+                    <div class="mb-3">
+                        <label  class="form-label">Priority</label>
+                        <select id="taskPriority" class="form-select">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        </select>
+                    </div>
 
-                <div class="mb-3">
-                    <label  class="form-label">Priority</label>
-                    <select id="taskPriority" class="form-select">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                    </select>
-                </div>
+                    <!-- Category dropdown list -->
+                    <div class="mb-3">
+                        <label  class="form-label">Category</label>
+                        <select id="taskCategory" class="form-select">
+                            <option value="Work">Work</option>
+                            <option value="Reminder">Reminder</option>
+                            <option value="Health">Health</option>
+                            <option value="Home">Home</option>
+                        
+                        </select>
+                    </div>
 
-                <div class="mb-3">
-                    <label  class="form-label">Category</label>
-                    <select id="taskCategory" class="form-select">
-                        <option value="Work">Work</option>
-                        <option value="Reminder">Reminder</option>
-                        <option value="Health">Health</option>
-                        <option value="Home">Home</option>
-                    
-                    </select>
-                </div>
-
-                <div class="mb-3 display">
-                    <label  class="form-label">Status</label>
-                    <select id="taskStatus" class="form-select" disabled>
-                        <option value="Pending">Pending</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Completed">Completed</option>
-                    </select>
-                </div>
-
+                    <div class="mb-3 display">
+                        <label  class="form-label">Status</label>
+                        <select id="taskStatus" class="form-select" disabled>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
                 </form>
-
             </div>
 
+            <!-- Action buttons section -->
             <div class="modal-footer">
+                <!-- Button that closes modal without saving -->
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                <!-- Button that will trigger save logic in JavaScript -->
                 <button id="saveTaskButton" type="button" class="btn btn-primary">Save</button>
             </div>
 
@@ -250,9 +350,8 @@
         </div>
     </div>
 
-    <!-- <script src="./script.js"></script> -->
     <script src="./JS/home.js"></script>
+    <script src="script_danna.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>  
 </body>
-
 </html>
