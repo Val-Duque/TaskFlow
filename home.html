@@ -47,13 +47,13 @@
                     <h6 class="card-subtitle mb-2  ">Priority</h6>
                     <!-- Priority buttons: high, medium, low -->
                     <section class="d-flex gap-3">
-                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-danger">
+                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-danger" data-filter="priority">
                             High
                         </button>
-                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-warning">
+                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-warning" data-filter="priority">
                             Medium
                         </button>
-                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-light">
+                        <button type="button"  class="filter-btn btn badge py-2 px-4 text-bg-secondary rounded-pill border border-2 border-light" data-filter="priority">
                             Low
                         </button>
                         
@@ -85,13 +85,13 @@
                     
                     <!-- Task status buttons -->
                     <section class="d-flex gap-3">
-                        <button type="button" class="filter-status-btn btn badge py-2 px-4   rounded-pill btn-success">
+                        <button type="button" class="filter-btn btn badge py-2 px-4   rounded-pill btn-success" data-filter="status">
                             Completed
                         </button>
-                        <button type="button" class="filter-status-btn btn badge py-2 px-4   rounded-pill btn-warning">
+                        <button type="button" class="filter-btn btn badge py-2 px-4   rounded-pill btn-warning" data-filter="status">
                             In Progress
                         </button>
-                        <button type="button" class="filter-status-btn btn badge py-2 px-4   rounded-pill btn-danger">
+                        <button type="button" class="filter-btn btn badge py-2 px-4   rounded-pill btn-danger" data-filter="status">
                             Pending
                         </button>
                         
@@ -215,7 +215,6 @@
                 justify-content-end
                 align-items-center">
                     <button class="btn btn-secondary mb-3" id="btn-logout" style="width: 180px;">Cerrar Sesión</button>
-                    <!-- <button class="btn btn-danger mb-3" id="btn-logout" style="width: 180px;">Cerrar Sesión</button> -->
                 </div>
                 
                 <fieldset class="border border-3 p-2">
