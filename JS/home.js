@@ -215,7 +215,7 @@ btnDeleteDetail.addEventListener("click", function () {
   detailStatus.innerText = "";
 });
 
-// FILTRE TAREAS
+// ---------- FILTRAR TAREAS
 
 const filterButtons = document.querySelectorAll(".filter-btn");
 
